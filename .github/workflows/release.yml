@@ -20,7 +20,7 @@ jobs:
           git fetch --unshallow --tags
           MOST_RECENT_TAG="$(git describe --tags $(git rev-list --tags --max-count=1))"
           echo "$MOST_RECENT_TAG"
-          FEATURE="$(echo "${CHANGES}" | grep -ic 'feature')"
+          FEATURE="$(echo "${CHANGES}" | grep -i 'feature' || true)"
           echo "$FEATURE"
           git config --global user.email "adampurcell7t@gmail.com"
           git config --global user.name "Adam Purcell"
