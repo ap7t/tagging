@@ -28,6 +28,7 @@ function get_changes() {
     LATEST_TAG="$(git tag --merged origin/master --sort=creatordate | tail -n 1)"
     # Find the merge commit hashes between the tag and head.
     MERGE_HASHES="$(git log $LATEST_TAG..HEAD --pretty='format:%H')"
+    echo "$MERGE_HASHES"
     # Get the last 40 PRs, in the format num=hash=title
     PULL_REQUESTS="$(hub pr list -s merged -o updated -L 40 -f '%I!;%sm!;%t!;%U%n')"
     # Filter to PRs which were merged in the last release. Exclude PRs starting with 'release'
