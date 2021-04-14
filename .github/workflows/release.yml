@@ -25,6 +25,7 @@ jobs:
           git config --global user.name "Adam Purcell"
           if [ -n "$FEATURE"]; then
               NEW_TAG="$(echo "$LATEST_TAG" | awk -F. '{OFS="."; $(NF-1)+=1; $NF=0; print $0}')"
+
               git tag -a "$NEW_TAG" -m "$CHANGES"
           else
               NEW_TAG="$(echo "$LATEST_TAG" | awk -F. '{OFS="."; $NF+=1; print $0}')" 
